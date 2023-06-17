@@ -32,11 +32,11 @@ void applyDelay(int16_t *input, int16_t *output, int numSamples) {
     // Salva o sinal de entrada no buffer
     buffer[bufferIndex] = input[i];
 
-    // Aplica o atraso com feedback ao sinal
+    // Aplica o efeito de delay com feedback ao sinal
     int16_t delayed = buffer[(bufferIndex + BUFFER_SIZE - DELAY_TIME) % BUFFER_SIZE];
     buffer[bufferIndex] = input[i] + delayed * DELAY_FEEDBACK;
 
-    // Mistura o sinal atrasado com o sinal original
+    // Mistura o sinal do efeito de delay com o sinal original
     int16_t mixed = input[i] * (1 - DELAY_MIX) + delayed * DELAY_MIX;
 
     // Salva o sinal processado no buffer de saída
